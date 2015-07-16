@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    header
+      h1 Fitness Tracker
+    .container
+      .main-content
+        block content
+      .workouts
+        block workouts
+      .routes
+        block routes
+    footer
+      p Running on Node.js with Express, Jade and Mongo
+
