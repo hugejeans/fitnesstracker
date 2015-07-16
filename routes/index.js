@@ -27,16 +27,17 @@ router.post('/lognew', function(req, res) {
 
     // Set internal DB variable
     var db = req.db;
+    console.log("in fileupload route");
 
     // Get form values. These rely on the "name" attributes
     var ActivityID = req.body.ActivityID;
     var ActivityName = req.body.ActivityName;
 
     // Set collection
-    var collection = db.get('workouts');
+    var userWorkouts = db.get('workouts');
 
     // Submit to the DB
-    collection.insert({
+    userWorkouts.insert({
         "ActivityID" : ActivityID,
         "ActivityName" : ActivityName
     }, function (err, doc) {
@@ -49,6 +50,17 @@ router.post('/lognew', function(req, res) {
             res.redirect("workouts");
         }
     });
+});
+
+/* Submit the file to the db */
+router.post('/fileupload', function(req, res){
+    var db = req.db;
+    var file = req.body.files;
+    
+    console.log("in fileupload route");
+    
+    console.log(req.body.files);
+
 });
 
 
