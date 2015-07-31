@@ -1,17 +1,20 @@
 extends layout
 block content
-  h1.
-    Workout List
-  ul
-    - each workout, i in workouts
-      li
-         |Activity ID: 
-         = workout.ActivityID
-         | DB ID:
-         = workout._id
+    h1.
+        Workout List:
+    br
+    ul
+        - each workout, i in workouts
+            li
+                |Activity ID: 
+                = workout.ActivityID
+                | DB ID:
+                = workout._id
   
 block workouts
-  .widget
-    h1 Tools
-    p
-      |Click on a workout to view its details.
+    .widget
+        h1 Tools
+        p
+            |Click on a workout to view its details.
+            br
+            |<a href="/">Return Home</a>

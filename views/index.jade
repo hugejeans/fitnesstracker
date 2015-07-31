@@ -1,22 +1,36 @@
 extend layout
 block content
-  h1.
-    MY DASHBOARD
-  p
-    | Welcome back to your fitness tracker.
-    | <a href="/uploads">Log new workout</a>
+    h1.
+        MY DASHBOARD
+    br
+    p
+        | Welcome back to your fitness tracker.
+        | <a href="/uploads">Log new workout</a>
 block workouts
-  .widget
-    h1 RECENT WORKOUTS
-    p
-      | <a href="/workouts">View All</a>
-    p
-      | Ran 7.56 km on 13/07/2015
+    .widget
+        h1 RECENT WORKOUTS
+        p
+            | <a href="/workouts">View All</a>
+            
+            - if (typeof(recentWorkout) !== 'undefined'){    
+                ul
+                - each workout, i in recentWorkout
+                    li
+                     |Activity ID: 
+                     = workout.ActivityID
+                     | DB ID:
+                     = workout._id
+            - }
+            - else {
+                br
+                | No Recent workouts
+                br
+            - }
 block routes
-  .widget
-    h1 RECENT ROUTES
-    p
-      | View All
-    p
-      | Phoenix Park Run
+    .widget
+        h1 RECENT ROUTES
+        p
+            | <a href="/workouts">View All</a>
+        p
+            | Phoenix Park Run
 

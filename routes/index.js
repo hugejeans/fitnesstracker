@@ -3,7 +3,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Fitness Tracker' });
+    var db = req.db;
+    var userWorkouts = db.get('workouts');
+    userWorkouts.find( {}, {}, function(e,docs){
+        console.log(docs);
+        res.render('index', { "recentWorkout" : docs });
+    });
 });
 
 /* Get the workout list page */
@@ -11,9 +16,7 @@ router.get('/workouts', function(req, res){
     var db = req.db;
     var userWorkouts = db.get('workouts');
     userWorkouts.find( {}, {}, function(e,docs){
-        res.render('workouts', {
-            "workouts" : docs
-        });
+        res.render('workouts', { "workouts" : docs });
     });
 });
 

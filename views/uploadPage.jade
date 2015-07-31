@@ -1,8 +1,21 @@
 extends layout
 block content
   h1= title
-  form#fileUpload(method="post" action="/uploads/upload" enctype="multipart/form-data") 
-    label(for="payload") Select a file to upload:     
+  br
+  form#fileUpload(method="post" action="/uploads/upload" enctype="multipart/form-data")
+    label(for="payload") Select a file to upload:
+    br
+    br
     input#payload(type="file" name="workout") 
     br 
+    br
     button#upload Upload
+    br
+    br
+block workouts
+    .widget
+        h1 Note
+        p
+            |Upload one or more workouts in a .csv format file matching the standard template. Each workout must be on a separate line.
+            br
+            |<a href="/">Return Home</a>
